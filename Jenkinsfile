@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        AWS_TEMP_CREDS = credentials('aws_id_joined')
+        AWS_TEMP_CREDS = credentials('aws_user_joined')
     }
     stages {
       stage('Use AWS') {
