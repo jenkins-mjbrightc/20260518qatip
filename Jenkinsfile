@@ -13,7 +13,7 @@ pipeline {
                 env.AWS_SESSION_TOKEN = parts[2]
             }
             sh 'env | grep AWS_'
-            #sh 'aws sts get-caller-identity'
+            // sh 'aws sts get-caller-identity'
          }
        }
 
