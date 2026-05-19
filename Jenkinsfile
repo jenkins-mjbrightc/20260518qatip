@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  env {
+    AWS_DEFAULT_REGION="us-west-2"
+  }
     stages {
       stage('Clone Repository') {
         steps {
