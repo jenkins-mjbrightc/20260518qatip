@@ -8,7 +8,7 @@ pipeline {
         steps {
             script {
                 def parts = AWS_TEMP_CREDS.split('\\|')
-                env.AWS_ACCESS_KEY_ID = parts[0].substring(1, length(parts[0]))
+                env.AWS_ACCESS_KEY_ID = (parts[0]).substring(1, length(parts[0]) )
                 env.AWS_SECRET_ACCESS_KEY = parts[1]
                 env.AWS_SESSION_TOKEN = parts[2]
             }
