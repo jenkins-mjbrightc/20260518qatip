@@ -12,7 +12,8 @@ pipeline {
                 env.AWS_SECRET_ACCESS_KEY = parts[1]
                 env.AWS_SESSION_TOKEN = parts[2]
             }
-            sh 'aws sts get-caller-identity'
+            sh 'env | grep AWS_'
+            #sh 'aws sts get-caller-identity'
          }
        }
 
