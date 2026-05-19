@@ -1,6 +1,21 @@
 pipeline {
     agent any
+    environment {
+        AWS_TEMP_CREDS = credentials('aws_id_joined')
+    }
     stages {
+      stage('Use AWS') {
+        steps {
+            script {
+                def parts = AWS_TEMP_CREDS.split('\\|')
+                env.AWS_ACCESS_KEY_ID = parts[0]
+                env.AWS_SECRET_ACCESS_KEY = parts[1]
+                env.AWS_SESSION_TOKEN = parts[2]
+            }
+            sh 'aws sts get-caller-identity'
+         }
+       }
+
         stage('Clone Repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/jenkins-mjbrightc/20260518qatip'
