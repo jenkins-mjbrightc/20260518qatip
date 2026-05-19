@@ -6,6 +6,7 @@ pipeline {
     stages {
       stage('Use AWS') {
         steps {
+            sh 'env | grep AWS_TEMP_CREDS'
             script {
                 def parts = AWS_TEMP_CREDS.split('\\|')
                 env.AWS_ACCESS_KEY_ID = parts[0]
